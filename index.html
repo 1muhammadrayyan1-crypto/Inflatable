@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+        }
+        h1 {
+            color: #58a6ff;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="content">
+        <!-- Default blank state before time hits -->
+        <p></p>
+    </div>
+
+    <script>
+        // Target: October 24, 2026 at 11:59:00 PM
+        const targetDate = new Date("2026-10-24T23:59:00").getTime();
+
+        const contentDiv = document.getElementById("content");
+
+        function checkTime() {
+            const now = new Date().getTime();
+            
+            if (now < targetDate) {
+                // Stays completely blank before the time
+                contentDiv.innerHTML = "";
+            } else {
+                // REVEAL MESSAGE ONCE TIME IS REACHED
+                contentDiv.innerHTML = `
+                    <h1>🎉 Happy Birthday! 🎂</h1>
+                    <p>If you did open this beforehand, it should show nothing if I've done everything right—hopefully. You should find a crappy SD card inside if it isn't misplaced 😭. Happy birthday! And yeah, you're a boomer now REGARDLESS. Inside the two very odd-looking socks (wallahi they're new, no contamination), you SHOULD be finding two separate chits or something, idk. Try your luck with it. Best wishes and shit 😅😄.
+You're an amazing friend. I've known you for a year or more now? Barely, but it counts. You're pretty cool gng, and like, don’t do drugs and stuff. I hope we stay friends.</p>
+                `;
+            }
+        }
+
+        // Run immediately and check every second
+        checkTime();
+        setInterval(checkTime, 1000);
+    </script>
+
+</body>
+</html>
